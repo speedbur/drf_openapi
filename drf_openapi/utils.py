@@ -28,7 +28,7 @@ def view_config(request_serializer=None, response_serializer=None, validate_resp
             if validate_response:
                 response_validator = instance.response_serializer(data=response.data)
                 response_validator.is_valid(raise_exception=True)
-                return Response(response_validator.validated_data)
+                return Response(response_validator.validated_data, status=response.status_code)
 
             return response
 
